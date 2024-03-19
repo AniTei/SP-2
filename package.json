@@ -4,7 +4,9 @@
   "description": "Starting over, moving sp-2 project to this repo, let's gooo :)",
   "main": "src/index.mjs",
   "scripts": {
-    "test": "test command"
+    "test": "test command",
+    "watch": "sass --watch src/scss:dist/css & live-server"
+
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/AniTei/SP-2/issues"
   },
-  "homepage": "https://github.com/AniTei/SP-2#readme"
+  "homepage": "https://github.com/AniTei/SP-2#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "sass": "^1.72.0"
+  }
 }
