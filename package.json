@@ -1,12 +1,11 @@
 {
   "name": "sp-2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Starting over, moving sp-2 project to this repo, let's gooo :)",
   "main": "src/index.mjs",
   "scripts": {
     "test": "test command",
     "watch": "sass --watch src/scss:dist/css & live-server"
-
   },
   "repository": {
     "type": "git",
