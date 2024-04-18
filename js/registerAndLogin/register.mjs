@@ -22,8 +22,6 @@ first make object, and make object be the return og harvestFunction, harvest val
 
 /* next make contact w server, and get error, work on error handling */
 
-
-
 /* _______________________KOPI fra js2_________________________ */
 
 /* URL */
@@ -31,8 +29,6 @@ const url = "https://v2.api.noroff.dev/auth/register";
 
 const publishForm = document.querySelector("#register-form");
 publishForm.addEventListener("submit", collectLoginInput);
-
-
 
 /**This function selects input from form on submit, 
  * creates an object
@@ -57,28 +53,26 @@ publishForm.addEventListener("submit", collectLoginInput);
  */
 
 async function collectLoginInput(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    alertElement.innerHTML ="";
+  alertElement.innerHTML = "";
 
-    const form = event.target;
-    const formData = new FormData(form);
-    const informationPutIn = Object.fromEntries(formData.entries());
+  const form = event.target;
+  const formData = new FormData(form);
+  const informationPutIn = Object.fromEntries(formData.entries());
 
-    /* lager objekt :) */
-    console.log(informationPutIn)
+  /* lager objekt :) */
+  console.log(informationPutIn);
 
-    try {
-
-        await registerUser(informationPutIn)
-
-    } catch (error) {
-        console.log(error)
-    }
+  try {
+    await registerUser(informationPutIn);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 const alertElement = document.querySelector("#registerHelp");
-console.log ("alertElement:", alertElement);
+console.log("alertElement:", alertElement);
 
 /**Function makes use of an object to create a user in the api
  * 
@@ -100,59 +94,52 @@ console.log ("alertElement:", alertElement);
     console.log(response);
  * ```
  */
-    async function registerUser(userInput) {
+async function registerUser(userInput) {
+  const optionsForRegistering = {
+    method: "POST",
+    body: JSON.stringify(userInput),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
-        const optionsForRegistering = {
-            method: 'POST',
-            body: JSON.stringify(userInput),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-    
-        const response = await fetch(url, optionsForRegistering);
-        const json = await response.json();
-    
-        console.log(response);
-        console.log ("json:",json)
-        console.log ("errormessage:", json.errors[0].message)
+  const response = await fetch(url, optionsForRegistering);
+  const json = await response.json();
 
-        if (response.statusCode = 400) {
-            console.log("response is not ok")
+  console.log("response:",response);
 
-            for (let i = 0; i < json.errors.length; i++) {
 
-            alertElement.innerHTML += `
+
+  // error messages works fine, now work on success
+/*   console.log("json:", json);
+  console.log("errormessage:", json.errors[0].message);
+
+  if (!response.ok) {
+    console.log("response is not ok :(");
+
+    for (let i = 0; i < json.errors.length; i++) {
+      alertElement.innerHTML += `
           <div  class="form-text alert alert-danger">
             <p>Server says: ${json.errors[i].message}</p>
-          </div>`
-            }
+          </div>`;
+    }
+  } */
 
-        }
 
-        if (response.ok) {
-            // make an alert show up in registerHelp
-            // choose a green one, to say 
-            // "You successfully registered, go to login to log in"
 
-            alertElement.innerHTML = `
-          
+
+  // denne funker når den if-statement for errors er commented out :) 
+  if (response.ok) {
+
+    // prøv deg litt fram med response
+
+    console.log("response is ok :)");
+
+    alertElement.innerHTML = `
             <div  class="form-text alert alert-success">
             <p>You successfully registered, go to Login to log in</p>
-          </div>`
-            
-          // dette funker ikke, ingenting html dukka opp
-          // nå får jeg profile already exists, så jeg oppretta en til, men det kom ikke sucsess
-          // tror det er grenser for hvor mange if jeg kan ha etter hverandre??. try catch??
+          </div>`;
 
-        }
-        // make error-feedback show up on site: 
-        // if 400, 
-        // loop through json, select error messages. 
-        // display a <p> in alert element, and keep what is there and add all relavant massages
-        //add the whole alert element
-
-
-    
-    
-    }
+    // tror det er grenser for hvor mange if jeg kan ha etter hverandre??. try catch??
+  }
+}
