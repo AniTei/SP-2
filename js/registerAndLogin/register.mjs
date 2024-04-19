@@ -4,12 +4,15 @@
 import { baseURL } from "../endpoints.mjs";
 import { register } from "../endpoints.mjs";
 
+import { errorMessage } from "./errorMessage.mjs";
+import { successMessage } from "./successMessage.mjs";
+
 const url = baseURL + register;
 
 console.log("url:", url); 
 
 const publishForm = document.querySelector("#register-form");
-publishForm.addEventListener("submit", collectLoginInput);
+publishForm.addEventListener("submit", collectRegisterInput);
 
 const alertElement = document.querySelector("#registerHelp");
 console.log("alertElement:", alertElement);
@@ -36,7 +39,7 @@ console.log("alertElement:", alertElement);
  * ```
  */
 
-async function collectLoginInput(event) {
+async function collectRegisterInput(event) {
   event.preventDefault();
 
   alertElement.innerHTML = "";
@@ -91,48 +94,11 @@ async function registerUser(userInput) {
   console.log("response:",response);
 
   try{
-      successMessage(response);
-      errorMessage(json, response);
+      successMessage(response, alertElement);
+      errorMessage(json, response, alertElement);
   }
   catch (error){
     console.log("error:", error)
   }
 }
 
-
-
-///////////////////
-
-function successMessage(response) {
-
-    if (response.ok) {
-    
-        console.log("response is ok :)");
-    
-        alertElement.innerHTML = `
-                <div  class="form-text alert alert-success">
-                <p>You successfully registered, go to Login to log in</p>
-              </div>`;
-    
-      }
-}
-
-
-////////////////////
-
-function errorMessage(json, response) {
-
-  console.log("json:", json);
-  console.log("errormessage:", json.errors[0].message);
-
-  if (!response.ok) {
-    console.log("response is not ok :(");
-
-    for (let i = 0; i < json.errors.length; i++) {
-      alertElement.innerHTML += `
-          <div  class="form-text alert alert-danger">
-            <p>Server says: ${json.errors[i].message}</p>
-          </div>`;
-    }
-  }
-}
