@@ -1,34 +1,18 @@
 // User story: a user can register with a noroff email
 
-/* What needs to happen? 
-1a. user can put relevant information into form
-1b. find out what is relevant information
-1c. update register form.
-1d. make information into object, collectFormInput
-2a. write function for contacting server
-3a. if successful, send user to profile.html
-3b. if failed, give user relevant error masssges.
 
-*/
+import { baseURL } from "../endpoints.mjs";
+import { register } from "../endpoints.mjs";
 
-/* note? Make an object, maybe do it backwards,
-first make the function, then make the params, params being, url and?
+const url = baseURL + register;
 
-url is probably ok
-
-the infor object is also probably ok, 
-
-first make object, and make object be the return og harvestFunction, harvest value :)*/
-
-/* next make contact w server, and get error, work on error handling */
-
-/* _______________________KOPI fra js2_________________________ */
-
-/* URL */
-const url = "https://v2.api.noroff.dev/auth/register";
+console.log("url:", url); 
 
 const publishForm = document.querySelector("#register-form");
 publishForm.addEventListener("submit", collectLoginInput);
+
+const alertElement = document.querySelector("#registerHelp");
+console.log("alertElement:", alertElement);
 
 /**This function selects input from form on submit, 
  * creates an object
@@ -61,7 +45,6 @@ async function collectLoginInput(event) {
   const formData = new FormData(form);
   const informationPutIn = Object.fromEntries(formData.entries());
 
-  /* lager objekt :) */
   console.log(informationPutIn);
 
   try {
@@ -71,8 +54,7 @@ async function collectLoginInput(event) {
   }
 }
 
-const alertElement = document.querySelector("#registerHelp");
-console.log("alertElement:", alertElement);
+
 
 /**Function makes use of an object to create a user in the api
  * 
@@ -109,27 +91,21 @@ async function registerUser(userInput) {
   console.log("response:",response);
 
   try{
-      // denne funker når den if-statement for errors er commented out :) 
-
       successMessage(response);
       errorMessage(json, response);
- 
   }
   catch (error){
-
-    console.log("error???:", error)
-
+    console.log("error:", error)
   }
-
 }
 
 
+
+///////////////////
+
 function successMessage(response) {
-    //do something
 
     if (response.ok) {
-
-        // prøv deg litt fram med response
     
         console.log("response is ok :)");
     
@@ -138,17 +114,14 @@ function successMessage(response) {
                 <p>You successfully registered, go to Login to log in</p>
               </div>`;
     
-        // tror det er grenser for hvor mange if jeg kan ha etter hverandre??. try catch??
-    
-        // hva med å bare legge inn som functioner som kan ligge et annet sted
-        // og bli startet her?
       }
 }
 
-function errorMessage(json, response) {
-    //do something
 
-  // error messages works fine w/o success
+////////////////////
+
+function errorMessage(json, response) {
+
   console.log("json:", json);
   console.log("errormessage:", json.errors[0].message);
 
