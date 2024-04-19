@@ -4,6 +4,8 @@ export const allListings = "/auction/listings/"
 
 export const bids = "?_bids=true";
 
+export const register = "/auth/register";
+
 
 // id has to be built with the querystinrg 
 
