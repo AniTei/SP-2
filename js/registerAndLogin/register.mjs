@@ -108,10 +108,48 @@ async function registerUser(userInput) {
 
   console.log("response:",response);
 
+  try{
+      // denne funker når den if-statement for errors er commented out :) 
+
+      successMessage(response);
+      errorMessage(json, response);
+ 
+  }
+  catch (error){
+
+    console.log("error???:", error)
+
+  }
+
+}
 
 
-  // error messages works fine, now work on success
-/*   console.log("json:", json);
+function successMessage(response) {
+    //do something
+
+    if (response.ok) {
+
+        // prøv deg litt fram med response
+    
+        console.log("response is ok :)");
+    
+        alertElement.innerHTML = `
+                <div  class="form-text alert alert-success">
+                <p>You successfully registered, go to Login to log in</p>
+              </div>`;
+    
+        // tror det er grenser for hvor mange if jeg kan ha etter hverandre??. try catch??
+    
+        // hva med å bare legge inn som functioner som kan ligge et annet sted
+        // og bli startet her?
+      }
+}
+
+function errorMessage(json, response) {
+    //do something
+
+  // error messages works fine w/o success
+  console.log("json:", json);
   console.log("errormessage:", json.errors[0].message);
 
   if (!response.ok) {
@@ -123,23 +161,5 @@ async function registerUser(userInput) {
             <p>Server says: ${json.errors[i].message}</p>
           </div>`;
     }
-  } */
-
-
-
-
-  // denne funker når den if-statement for errors er commented out :) 
-  if (response.ok) {
-
-    // prøv deg litt fram med response
-
-    console.log("response is ok :)");
-
-    alertElement.innerHTML = `
-            <div  class="form-text alert alert-success">
-            <p>You successfully registered, go to Login to log in</p>
-          </div>`;
-
-    // tror det er grenser for hvor mange if jeg kan ha etter hverandre??. try catch??
   }
 }
