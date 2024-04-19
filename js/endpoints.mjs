@@ -6,6 +6,8 @@ export const bids = "?_bids=true";
 
 export const register = "/auth/register";
 
+export const login = "/auth/login";
+
 
 // id has to be built with the querystinrg 
 
