@@ -56,7 +56,7 @@ async function collectFormInput(event) {
 }
 
 //////////////////
-
+import { loginSuccess } from "./loginsuccess.mjs";
 import { errorMessage } from "./errorMessage.mjs";
 
 //made contact , I get relevant error message
@@ -92,7 +92,8 @@ errorMessage(json, response, alertElement);
     }
   }
 
-  function loginSuccess (json, response) {
+  // oops, make this separate file?
+/*   function loginSuccess (json, response) {
     if(response.ok){
 
         console.log("this is the loginSuccess func saying hi")
@@ -100,11 +101,11 @@ errorMessage(json, response, alertElement);
 
         localStorage.setItem("token", json.data.accessToken);
 
-        console.log ("locale storage holds:", localStorage)
+        console.log ("local storage holds:", localStorage)
 
         function takeUserToProfile() {
             window.location.href = "profile.html";
         }
         takeUserToProfile();
     }
-  };
+  }; */
