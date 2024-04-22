@@ -1,11 +1,4 @@
 //user can login
-
-// ok da prøver vi litt til :))) 
-
-
-// jepp :))))
-console.log("heisann login")
-
 // diff from register, deal with token and send user to profile. 
 
 //URL
@@ -14,15 +7,6 @@ import { login } from "../endpoints.mjs";
 
 const url = baseURL + login ;
 console.log("url:", url)
-
-//lage object for request, email og passord, ok
-
-//kontakte url
-// få kontakt, men la det være feil så du får tilbake en error
-
-
-
-
 
 const publishForm = document.querySelector("#register-form");
 publishForm.addEventListener("submit", collectFormInput);
@@ -56,6 +40,7 @@ async function collectFormInput(event) {
   event.preventDefault();
 
   alertElement.innerHTML = "";
+  localStorage.clear();
 
   const form = event.target;
   const formData = new FormData(form);
@@ -72,7 +57,6 @@ async function collectFormInput(event) {
 
 //////////////////
 
-import { successMessage } from "./successMessage.mjs";
 import { errorMessage } from "./errorMessage.mjs";
 
 //made contact , I get relevant error message
@@ -92,17 +76,35 @@ async function registerUser(userInput) {
     const response = await fetch(url, optionsForRegistering);
     const json = await response.json();
   
-    console.log("response:",response);
+    console.log("json:",json);
   
     try{
 
         //if success, just send user to profile?? 
-        // But first I need to actually have response.ok !!
-        successMessage(response, alertElement);
-        errorMessage(json, response, alertElement);
-    }
+/*         successMessage(response, alertElement);
+ */        
 
+loginSuccess(json, response);
+errorMessage(json, response, alertElement);
+    }
     catch (error){
       console.log("error:", error)
     }
   }
+
+  function loginSuccess (json, response) {
+    if(response.ok){
+
+        console.log("this is the loginSuccess func saying hi")
+        console.log("do we have a token?:", json.data.accessToken)
+
+        localStorage.setItem("token", json.data.accessToken);
+
+        console.log ("locale storage holds:", localStorage)
+
+        function takeUserToProfile() {
+            window.location.href = "profile.html";
+        }
+        takeUserToProfile();
+    }
+  };
