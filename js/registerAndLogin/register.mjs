@@ -14,7 +14,7 @@ console.log("url:", url);
 const publishForm = document.querySelector("#register-form");
 publishForm.addEventListener("submit", collectRegisterInput);
 
-const alertElement = document.querySelector("#registerHelp");
+const alertElement = document.querySelector("#formHelp");
 console.log("alertElement:", alertElement);
 
 /**This function selects input from form on submit, 
