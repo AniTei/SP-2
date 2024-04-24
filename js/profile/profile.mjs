@@ -1,3 +1,6 @@
+// Kopiere inn det som ligger på github
+// ok now i get response ok igjen
+
 // user can...
 
 // make request, display user info
@@ -30,61 +33,58 @@ console.log("hello profile :))");
 
 
 import { baseURL } from "../endpoints.mjs";
-const exampleProfile =  "/auction/profiles/<bamse_mums>"
+import { exampleProfile } from "../endpoints.mjs";
+const url = baseURL + exampleProfile;
 
 const token = localStorage.getItem('token');
-console.log("token:", token)
+console.log("token:", token);
+
+const key = localStorage.getItem('key');
+console.log("key:", key);
 
 
+async function getProfile (url, token, key){
 
-////////////////////////////////API KEY//////////////////////////////////////
+    const options = {
+   headers: {
+     Authorization: `Bearer ${token}`,
+     "X-Noroff-API-Key": key
+     // so i need to make apiKey from response, or data, to refer to it?
+   }
+ }
 
-//error: Object { message: "No API key header was found" }
+ const response = await fetch(url, options)
+ const data = await response.json()
 
-/* API Key
-Create and use an API Key to access the Noroff API. 
+ console.log("response:", response)
+ console.log ("data:", data)
 
-https://docs.noroff.dev/docs/v2/auth/api-key
+ console.log("name:", data.data.name)
 
-*/
+ return data
 
-const apiKey = "/auth/create-api-key"
-const url = baseURL + apiKey;
-console.log("url:",url)
-
-const options = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-    },  
-    body: JSON.stringify({
-        "name": "My API Key name" // Optional
-      }),
-    /* body: JSON.stringify(), */
-
-    //documentation says: A successful response will return a 201 Created status code and the newly created API Key.
-    ////// I GOT A 201 response OK???!!!! :)
 }
 
-async function createApiKey(url, options) {
 
-    const response = await fetch(url, options);
-    const data = await response.json();
+////// i get bamsemums back!!!, w 1000 credit :)))
 
-    console.log("response:", response)
-    console.log ("data:", data)
+////////////////DISPLAY USER//////////////////////////
+// I feel like I have ssooooo much left to learn :))
+// HELLO USERNAME 
 
-};
-createApiKey(url, options);
+const h1 = document.querySelector("h1");
 
-//error in response, internal server error, 500
+function displayUser () {
 
-/* {
-    "data": {
-      "name": "My API Key name", // Or "API Key" if no name was provided
-      "status": "ACTIVE",
-      "key": "be4ab55c-d5b0-44c3-8a11-67a7dafddd10" // The API Key
-    },
-    "meta": {}
-  } */
+
+h1.innerHTML ="trudeluuu"
+
+getProfile(url, token, key);
+
+/* console.log("inni getProfile:", data) */
+
+    // how was it i used return 
+
+}
+
+displayUser();

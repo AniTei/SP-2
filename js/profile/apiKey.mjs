@@ -29,9 +29,14 @@ async function createApiKey(url, options) {
     console.log("response:", response)
     console.log ("key:", apiKey.data.key)
 
-    return apiKey
+    localStorage.setItem("key", apiKey.data.key);
+
 };
 createApiKey(url, options);
+
+const key = localStorage.getItem('key');
+console.log("localestorage key:", key)
+
 
 
 // i get the right response, now how do i get thet key out of the function?
