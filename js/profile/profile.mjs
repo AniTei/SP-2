@@ -74,16 +74,21 @@ async function getProfile (url, token, key){
 
 const h1 = document.querySelector("h1");
 
-function displayUser () {
+async function displayUser () {
 
 
 h1.innerHTML ="trudeluuu"
 
-getProfile(url, token, key);
+const profileGotten = await getProfile(url, token, key);
+
+console.log("profileGotten:", profileGotten)
+
+h1.innerHTML = `HELLO ${profileGotten.data.name}😍`
 
 /* console.log("inni getProfile:", data) */
 
     // how was it i used return 
+    // MAKE A VALUE, i think, like const
 
 }
 
