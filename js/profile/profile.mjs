@@ -28,20 +28,46 @@ A registered user may view their total credit
  */
 console.log("hello profile :))");
 
+
+
 //pass profile by querystring?? 
 // or locale storage?
 
+
+/// CREATE KEY ///
+import { createApiKey } from "./createApiKey.mjs";
+import { apiKey } from "../endpoints.mjs";
+const keyUrl = baseURL + apiKey;
+console.log("keyUrl:",keyUrl);
+
+const token = localStorage.getItem('token');
+
+const keyOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+    },  
+    body: JSON.stringify({
+        "name": "My API Key name" 
+      }),
+}
+
+await createApiKey(keyUrl, keyOptions );
+
+
+
+///////////////////////// GET PROFILE, now we have token and key
 
 import { baseURL } from "../endpoints.mjs";
 import { exampleProfile } from "../endpoints.mjs";
 const url = baseURL + exampleProfile;
 
-const token = localStorage.getItem('token');
+/* const token = localStorage.getItem('token');*/
 console.log("token:", token);
 
 const key = localStorage.getItem('key');
 console.log("key:", key);
-
 
 async function getProfile (url, token, key){
 
@@ -58,7 +84,6 @@ async function getProfile (url, token, key){
 
  console.log("response:", response)
  console.log ("data:", data)
-
  console.log("name:", data.data.name)
 
  return data
@@ -66,30 +91,17 @@ async function getProfile (url, token, key){
 }
 
 
-////// i get bamsemums back!!!, w 1000 credit :)))
-
+////// i get bamsemums, w 1000 credit :)))
 ////////////////DISPLAY USER//////////////////////////
-// I feel like I have ssooooo much left to learn :))
-// HELLO USERNAME 
 
 const h1 = document.querySelector("h1");
+const profileContent = document.querySelector(".profile-content")
 
 async function displayUser () {
-
-
-h1.innerHTML ="trudeluuu"
-
-const profileGotten = await getProfile(url, token, key);
-
-console.log("profileGotten:", profileGotten)
-
-h1.innerHTML = `HELLO ${profileGotten.data.name}😍`
-
-/* console.log("inni getProfile:", data) */
-
-    // how was it i used return 
-    // MAKE A VALUE, i think, like const
-
-}
-
+    const profileGotten = await getProfile(url, token, key);
+    console.log("profileGotten:", profileGotten)
+    h1.innerHTML = `HELLO ${profileGotten.data.name}😍`
+    profileContent.innerHTML = `<img src="${profileGotten.data.avatar.url}" alt="${profileGotten.data.avatar.alt}"> <p>Total credit: ${profileGotten.data.credits}<p>`;
+};
 displayUser();
+

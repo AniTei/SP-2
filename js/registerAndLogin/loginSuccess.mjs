@@ -1,3 +1,22 @@
+
+/* 
+import { baseURL } from "../endpoints.mjs";
+import { apiKey } from "../endpoints.mjs";
+const url = baseURL + apiKey;
+console.log("url:",url) */
+
+/* const options = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+    },  
+    body: JSON.stringify({
+        "name": "My API Key name" 
+      }),
+} */
+
+
 export function loginSuccess (json, response) {
     if(response.ok){
 
@@ -7,6 +26,10 @@ export function loginSuccess (json, response) {
         localStorage.setItem("token", json.data.accessToken);
 
         console.log ("local storage holds:", localStorage)
+
+
+
+
 
         function takeUserToProfile() {
             window.location.href = "profile.html";

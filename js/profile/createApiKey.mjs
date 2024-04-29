@@ -21,7 +21,7 @@ const options = {
       }),
 }
 
-async function createApiKey(url, options) {
+export async function createApiKey(url, options) {
 
     const response = await fetch(url, options);
     const apiKey = await response.json();
@@ -40,3 +40,6 @@ console.log("localestorage key:", key)
 
 
 // i get the right response, now how do i get thet key out of the function?
+// token / key? hvordan få begge, 
+// first I need the token, because I need the token to get the key, 
+// WHERE DO I GET TOKEN FROM haha

@@ -4,7 +4,6 @@
 //URL
 import { baseURL } from "../endpoints.mjs";
 import { login } from "../endpoints.mjs";
-
 const url = baseURL + login ;
 console.log("url:", url)
 
@@ -49,7 +48,7 @@ async function collectFormInput(event) {
   console.log(informationPutIn);
 
   try {
-    await registerUser(informationPutIn);
+    await loginUser(informationPutIn);
   } catch (error) {
     console.log(error);
   }
@@ -64,7 +63,7 @@ import { errorMessage } from "./errorMessage.mjs";
 
 // what happens if I try a valid one? 
 //bamse_mums@noroff.no didn't work, maybe it actually needs to be my email??
-async function registerUser(userInput) {
+async function loginUser(userInput) {
     const optionsForRegistering = {
       method: "POST",
       body: JSON.stringify(userInput),
