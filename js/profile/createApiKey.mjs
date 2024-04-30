@@ -1,11 +1,8 @@
 //now i get response ok igjen
 
-console.log("hello create-listing, working on api-key :))");
-
 import { baseURL } from "../endpoints.mjs";
 import { apiKey } from "../endpoints.mjs";
 const url = baseURL + apiKey;
-console.log("url:",url)
 
 const token = localStorage.getItem('token');
 console.log("token:", token)

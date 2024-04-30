@@ -1,26 +1,19 @@
-// Kopiere inn det som ligger på github
-// ok now i get response ok igjen
-
-// user can...
-
-// make request, display user info
-
-// possible to make listing. 
 
 /* User stories to happen on profile:
 - able to log out
-- able to create listing
 - able to edit avatar
 - able to view total credit
+(- able to create listing)
 
 A registered user may logout
 A registered user may update their avatar
 A registered user may view their total credit
-
  */
 
 // make relevant info show up:
 // user name
+// credit
+// avatar image
 
 
 // documentation
@@ -28,11 +21,7 @@ A registered user may view their total credit
  */
 console.log("hello profile :))");
 
-
-
 //pass profile by querystring?? 
-// or locale storage?
-
 
 /// CREATE KEY ///
 import { createApiKey } from "./createApiKey.mjs";
@@ -55,6 +44,7 @@ const keyOptions = {
 
 await createApiKey(keyUrl, keyOptions );
 
+// shouldnt make api key again, I should just get it from locale storage
 
 
 ///////////////////////// GET PROFILE, now we have token and key
@@ -91,7 +81,7 @@ async function getProfile (url, token, key){
 }
 
 
-////// i get bamsemums, w 1000 credit :)))
+// i get bamse_mums, w 1000 credit :)))
 ////////////////DISPLAY USER//////////////////////////
 
 const h1 = document.querySelector("h1");
@@ -100,7 +90,7 @@ const profileContent = document.querySelector(".profile-content")
 async function displayUser () {
     const profileGotten = await getProfile(url, token, key);
     console.log("profileGotten:", profileGotten)
-    h1.innerHTML = `HELLO ${profileGotten.data.name}😍`
+    h1.innerHTML = `HELLO ${profileGotten.data.name}`
     profileContent.innerHTML = `<img src="${profileGotten.data.avatar.url}" alt="${profileGotten.data.avatar.alt}"> <p>Total credit: ${profileGotten.data.credits}<p>`;
 };
 displayUser();

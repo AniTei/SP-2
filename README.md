@@ -34,9 +34,14 @@ Hvordan får jeg
 
 
 Nå har jeg token og key i profil, så jeg burde kunne hente brukeren :)
-
 Jeg må trykke på oppdater for å få fram profilen, hvordan kan jeg få profilen til å dukke opp på første gang jeg kommer til profile-page?
-
 Kanskje jeg må sette igang create api inni profil.mjs?
 
 I works, an await was missing??, no need for reload func
+
+Next?
+edit avatar
+https://docs.noroff.dev/docs/v2/auction-house/profiles, update profile
+
+Or/ make it so the profile opened depends on what profile is logged in?
+querystring???
