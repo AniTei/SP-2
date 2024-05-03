@@ -45,7 +45,7 @@ async function collectFormInput(event) {
   const formData = new FormData(form);
   const informationPutIn = Object.fromEntries(formData.entries());
 
-  console.log(informationPutIn);
+  console.log("from form:",informationPutIn);
 
   try {
     await loginUser(informationPutIn);
@@ -75,7 +75,8 @@ async function loginUser(userInput) {
     const response = await fetch(url, optionsForRegistering);
     const json = await response.json();
   
-    console.log("json:",json);
+    console.log("loginUser, json:",json);
+    console.log("loginUser, response", response)
   
     try{
 
@@ -83,7 +84,7 @@ async function loginUser(userInput) {
 /*         successMessage(response, alertElement);
  */        
 
-loginSuccess(json, response);
+await loginSuccess(json, response);
 errorMessage(json, response, alertElement);
     }
     catch (error){

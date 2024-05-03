@@ -16,22 +16,19 @@ A registered user may view their total credit
 // avatar image
 
 
-// documentation
-/* https://docs.noroff.dev/docs/v2/auction-house/profiles
- */
 console.log("hello profile :))");
 
 //pass profile by querystring?? 
 
-/// CREATE KEY ///
-import { createApiKey } from "./createApiKey.mjs";
+/// CREATE KEY /// 
+/* import { createApiKey } from "./createApiKey.mjs";
 import { apiKey } from "../endpoints.mjs";
 const keyUrl = baseURL + apiKey;
-console.log("keyUrl:",keyUrl);
+console.log("keyUrl:",keyUrl); */
 
-const token = localStorage.getItem('token');
 
-const keyOptions = {
+
+/* const keyOptions = {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -40,10 +37,15 @@ const keyOptions = {
     body: JSON.stringify({
         "name": "My API Key name" 
       }),
-}
+} */
 
-await createApiKey(keyUrl, keyOptions );
-
+// I should probably not call CREATE apiKey here? or should I ?
+// Just use it from storage?
+// If i log in, when is the first time the apiKey is needed?
+// /when is the first time it is called
+// should be put in storage then. 
+/* await createApiKey(keyUrl, keyOptions );
+ */
 // shouldnt make api key again, I should just get it from locale storage
 
 
@@ -53,43 +55,42 @@ import { baseURL } from "../endpoints.mjs";
 import { exampleProfile } from "../endpoints.mjs";
 const url = baseURL + exampleProfile;
 
-/* const token = localStorage.getItem('token');*/
-console.log("token:", token);
-
+const token = localStorage.getItem('token');
+console.log("token in profile, line 59:", token);
 const key = localStorage.getItem('key');
-console.log("key:", key);
+console.log("key in profile, line 60:", key);
 
 async function getProfile (url, token, key){
 
     const options = {
-   headers: {
-     Authorization: `Bearer ${token}`,
-     "X-Noroff-API-Key": key
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "X-Noroff-API-Key": key
      // so i need to make apiKey from response, or data, to refer to it?
-   }
- }
+     // maybe not make a new one?
+        }
+    }
 
  const response = await fetch(url, options)
  const data = await response.json()
 
- console.log("response:", response)
- console.log ("data:", data)
- console.log("name:", data.data.name)
+ console.log("profile, getProfile, response:", response)
+ console.log ("profile, getProfile, data:", data)
+ console.log("profile, getProfile, name:", data.data.name)
 
  return data
+};
 
-}
-
-
-// i get bamse_mums, w 1000 credit :)))
 ////////////////DISPLAY USER//////////////////////////
 
+// elements to fill, on profile
 const h1 = document.querySelector("h1");
 const profileContent = document.querySelector(".profile-content")
 
+// I should do something to divide this? separate file?
 async function displayUser () {
     const profileGotten = await getProfile(url, token, key);
-    console.log("profileGotten:", profileGotten)
+    console.log("profileGotten, from getProfile:", profileGotten)
     h1.innerHTML = `HELLO ${profileGotten.data.name}`
     profileContent.innerHTML = `<img src="${profileGotten.data.avatar.url}" alt="${profileGotten.data.avatar.alt}"> <p>Total credit: ${profileGotten.data.credits}<p>`;
 };
