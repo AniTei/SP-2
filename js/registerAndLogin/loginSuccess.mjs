@@ -52,6 +52,8 @@ export async function loginSuccess (json, response) {
         // now we have both a token and a key!!!
         // createApiKey should not be run again, now that we have it 
 
+console.log("json.data.name, in success",json.data.name)
+localStorage.setItem("userID", json.data.name);
 
 
 
@@ -68,7 +70,14 @@ export async function loginSuccess (json, response) {
 // don't take user to profile for now, make key first
         function takeUserToProfile() {
             window.location.href = "profile.html";
+
+/*             window.location.href=`profile.html?id=${json.data.name}`;
+ */
+
         }
         takeUserToProfile();
+
+
     }
   };
+

@@ -23,8 +23,12 @@ export const apiKey = "/auth/create-api-key"
 const seller = "?_seller=true"
 // https://v2.api.noroff.dev/auction/listings?_seller=true
 
-// the <> should not be included?
+// the <> should not be included? no
 export const exampleProfile =  "/auction/profiles/bamse_mums"
+
+export const profiles =  "/auction/profiles/"
+
+// and create the id part
 
 
 

@@ -52,8 +52,25 @@ console.log("keyUrl:",keyUrl); */
 ///////////////////////// GET PROFILE, now we have token and key
 
 import { baseURL } from "../endpoints.mjs";
-import { exampleProfile } from "../endpoints.mjs";
-const url = baseURL + exampleProfile;
+import { profiles } from "../endpoints.mjs";
+
+// now make profile logged in and profile displayed match
+/* import { exampleProfile } from "../endpoints.mjs";
+const url = baseURL + exampleProfile; */
+
+// make id, pass by querystring?
+/* const queryString = document.location.search;
+const params = new URLSearchParams(queryString);
+const id = params.get("id"); */
+
+const userID = localStorage.getItem('userID');
+
+const url = baseURL + profiles + userID;
+console.log("profile url:", url);
+
+
+
+
 
 const token = localStorage.getItem('token');
 console.log("token in profile, line 59:", token);

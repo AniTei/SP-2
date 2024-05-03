@@ -4,12 +4,23 @@ console.log("hello editAvatar");
 
 // url
 import { baseURL } from "../endpoints.mjs";
-import { exampleProfile } from "../endpoints.mjs";
-const url = baseURL + exampleProfile 
+import { profiles } from "../endpoints.mjs";
+/* import { exampleProfile } from "../endpoints.mjs";
+ */
 
-// token and key, for request
+const userID = localStorage.getItem('userID');
+
+/* const url = baseURL + exampleProfile 
+ */
+
+const url = baseURL + profiles + userID;
+
+// token and key, for request, and why is token dark?
 const token = localStorage.getItem('token');
+
+// i think i declared this twice??
 const key = localStorage.getItem('key');
+
 console.log("editAvatar, key", key)
 
 //form 
