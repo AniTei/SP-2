@@ -8,6 +8,8 @@ export const register = "/auth/register";
 
 export const login = "/auth/login";
 
+export const apiKey = "/auth/create-api-key"
+
 
 // id has to be built with the querystinrg 
 
@@ -20,5 +22,16 @@ export const login = "/auth/login";
 
 const seller = "?_seller=true"
 // https://v2.api.noroff.dev/auction/listings?_seller=true
+
+// the <> should not be included? no
+export const exampleProfile =  "/auction/profiles/bamse_mums"
+
+export const profiles =  "/auction/profiles/"
+
+// and create the id part
+
+
+
+
 
 

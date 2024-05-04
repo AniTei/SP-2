@@ -4,7 +4,6 @@
 //URL
 import { baseURL } from "../endpoints.mjs";
 import { login } from "../endpoints.mjs";
-
 const url = baseURL + login ;
 console.log("url:", url)
 
@@ -46,17 +45,17 @@ async function collectFormInput(event) {
   const formData = new FormData(form);
   const informationPutIn = Object.fromEntries(formData.entries());
 
-  console.log(informationPutIn);
+  console.log("from form:",informationPutIn);
 
   try {
-    await registerUser(informationPutIn);
+    await loginUser(informationPutIn);
   } catch (error) {
     console.log(error);
   }
 }
 
 //////////////////
-
+import { loginSuccess } from "./loginsuccess.mjs";
 import { errorMessage } from "./errorMessage.mjs";
 
 //made contact , I get relevant error message
@@ -64,7 +63,7 @@ import { errorMessage } from "./errorMessage.mjs";
 
 // what happens if I try a valid one? 
 //bamse_mums@noroff.no didn't work, maybe it actually needs to be my email??
-async function registerUser(userInput) {
+async function loginUser(userInput) {
     const optionsForRegistering = {
       method: "POST",
       body: JSON.stringify(userInput),
@@ -76,7 +75,8 @@ async function registerUser(userInput) {
     const response = await fetch(url, optionsForRegistering);
     const json = await response.json();
   
-    console.log("json:",json);
+    console.log("loginUser, json:",json);
+    console.log("loginUser, response", response)
   
     try{
 
@@ -84,7 +84,7 @@ async function registerUser(userInput) {
 /*         successMessage(response, alertElement);
  */        
 
-loginSuccess(json, response);
+await loginSuccess(json, response);
 errorMessage(json, response, alertElement);
     }
     catch (error){
@@ -92,7 +92,8 @@ errorMessage(json, response, alertElement);
     }
   }
 
-  function loginSuccess (json, response) {
+  // oops, make this separate file?
+/*   function loginSuccess (json, response) {
     if(response.ok){
 
         console.log("this is the loginSuccess func saying hi")
@@ -100,11 +101,11 @@ errorMessage(json, response, alertElement);
 
         localStorage.setItem("token", json.data.accessToken);
 
-        console.log ("locale storage holds:", localStorage)
+        console.log ("local storage holds:", localStorage)
 
         function takeUserToProfile() {
             window.location.href = "profile.html";
         }
         takeUserToProfile();
     }
-  };
+  }; */

@@ -8,6 +8,12 @@
       rel="stylesheet"
       href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
+<!--     <script type="module" src="../js/profile/createApiKey.mjs"></script>
+ -->    
+
+    <script type="module" src="../js/profile/profile.mjs"></script>
+    <script type="module" src="../js/profile/logout.mjs"></script>
+    <script type="module" src="../js/profile/editAvatar.mjs"></script>
     <title>Profile | Artcellar</title>
   </head>
   <body>
@@ -51,8 +57,37 @@
       </div>
     </nav>
 
-    <h1>Profile</h1>
+    <h1>You are logged out. Please login.</h1>
+
+    <div class="profile-content">
+  <!--     <img src="" alt="">
+      <p>Credit: 1234 ±</p> -->
+    </div>
+
+
+    <h2>✏️ Edit avatar</h2>
+    <div>
+      <form class="col-md-8 col-lg-6" id="edit-avatar-form">
+        <div class="mb-3 ">
+          <label for="exampleInputEmail1" class="form-label">URL for new avatar</label>
+          <input type="text" name="url" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <!-- <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Alternative text for your new image:</label>
+          <input type="text" name="alt" class="form-control" id="exampleInputPassword1">
+        </div> -->
+        <div id="formHelp"> 
+          <p>You can have some help if you need it :)))</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <!-- Make errormassages red?
+        also hide them untill error? -->
+    </form>
+
+
+    </div>
+   
     <a href="create-listing.html">create listing</a>
-    <button>logout</button>
+    <button class="btn btn-primary logout">Logout</button>
   </body>
 </html>
