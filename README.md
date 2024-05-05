@@ -54,3 +54,9 @@ querystring???
 //
 
 // 1308, index is ok, next change out josephine
+
+// når jeg har med serch.mjs, så blir alle poster borte, 
+// her er det noe rart. 
+// use separate element for search results??
+
+hva skjer om jeg bare putter alt i samme fil? not exactly best practice but :/
