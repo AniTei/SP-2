@@ -56,17 +56,28 @@ bidForm.addEventListener("submit", collectFormInput);
   
     alertElement.innerHTML = "";
   
-    const form = event.target;
+/*     const form = event.target;
     const formData = new FormData(form);
     const informationPutIn = Object.fromEntries(formData.entries());
-  
-    console.log("bid, collect form input, from form:",informationPutIn);
+    console.log("bid, collect form input, from form:",informationPutIn); */
+
+    const bidValue = document.querySelector('#bidInput').value;
+
+console.log("bidValue", bidValue);
+
+const bidValueNumber = Number(bidValue)
+
 
     //build object for option 
     // first just hard code :))
     const obj = {
-        amount: 5
+        amount: bidValueNumber
       }
+
+console.log("obj:", obj);
+console.log(typeof bidValueNumber);
+
+
   
     try {
       await makeContact(obj);
@@ -104,8 +115,8 @@ const bidOptions = {
 /*         successMessage(response, alertElement);
  */        
 
-/* await loginSuccess(json, response);
- */errorMessage(json, response, alertElement);
+reloadPage(response);
+errorMessage(json, response, alertElement);
     }
     catch (error){
       console.log("error:", error)
@@ -115,6 +126,11 @@ const bidOptions = {
 //getting 500 for now, but made contact w server at least
 
 
+function reloadPage (response){
+    if(response.ok){
+            location.reload(); 
 
+    }
+};
 
 /// 16:51, it worked!!!, next clean up!!
