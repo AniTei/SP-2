@@ -7,6 +7,7 @@
       rel="stylesheet"
       href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
     /> 
+    <script type="module" src="../js/create-listing/create-listing.mjs"></script>
     <title>Create listing | Artcellar</title>
   </head>
   <body>
@@ -52,48 +53,52 @@
       <div class="row d-flex justify-content-center">
         <form class="col-md-8 col-lg-6">
           <div class="mb-3">
-            <label for="exampleInputTitle" class="form-label">Title</label>
+            <label for="titleInput" class="form-label">Title</label>
             <input
-              type="title??"
+              type="text"
               class="form-control"
-              id="exampleInputTitle"
+              id="titleInput"
               aria-describedby="titleHelp"
             />
             <div id="bidHelp" class="form-text">information</div>
           </div>
           <div class="mb-3">
-            <label for="exampleInputDeadline" class="form-label"
+            <label for="deadlineInput" class="form-label"
               >Deadline</label
             >
             <input
               type="date??"
               class="form-control"
-              id="exampleInputDeadline"
+              id="deadlineInput"
               aria-describedby="deadlineHelp"
+              placeholder="2024-00-00T00:00:00.000Z"
             />
-            <div id="deadlineHelp" class="form-text">information</div>
+            <div id="deadlineHelp" class="form-text">yyyy-mm-ddThh:mm:ss.000Z</div>
           </div>
           <div class="mb-3">
-            <label for="exampleInputMedia" class="form-label">Media</label>
+            <label for="mediaInput" class="form-label">Media</label>
             <input
-              type="link??"
+              type="text"
               class="form-control"
-              id="exampleInputMedia"
+              id="mediaInput"
               aria-describedby="mediaHelp"
             />
             <div id="mediaHelp" class="form-text">information</div>
           </div>
 
           <div class="mb-3">
-            <label for="exampleInputDescription" class="form-label"
+            <label for="descriptionInput" class="form-label"
               >Description</label
             >
             <input
               type="text"
               class="form-control"
-              id="exampleInputDescription"
+              id="descriptionInput"
             />
             <div id="descriptionHelp" class="form-text">information</div>
+          </div>
+          <div id="formHelp"> 
+            <p>You can have some help if you need it :)))</p>
           </div>
           <button type="submit" class="btn btn-primary">
             Publish My Listing
@@ -101,6 +106,5 @@
         </form>
       </div>
     </div>
-    <h2>just putting api-key here for now</h2>
   </body>
 </html>
