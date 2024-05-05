@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../js/specific-listing/listing.mjs"></script>
+    <script type="module" src="../js/specific-listing/addBid.mjs"></script>
     <link
       rel="stylesheet"
       href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -82,14 +83,15 @@
           <div class="mb-3">
             <label for="exampleInputBid" class="form-label">Your bid</label>
             <input
-              type="number??"
+            name="amount"
+              type="number"
               class="form-control"
               id="exampleInputBid"
               aria-describedby="bidHelp"
             />
             <div id="bidHelp" class="form-text">some help</div>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label"
               >Your Password</label
             >
@@ -98,6 +100,9 @@
               class="form-control"
               id="exampleInputPassword1"
             />
+          </div> -->
+          <div id="formHelp"> 
+            <p>You can have some help if you need it :)))</p>
           </div>
           <button type="submit" class="btn btn-primary">Make a bid</button>
         </form>
