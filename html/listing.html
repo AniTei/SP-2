@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="../js/listing.mjs"></script>
+    <script type="module" src="../js/specific-listing/listing.mjs"></script>
+    <script type="module" src="../js/specific-listing/addBid.mjs"></script>
     <link
       rel="stylesheet"
       href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -38,23 +39,23 @@
     <nav class="navbar d-none d-sm-block navbar-expand bg-body-tertiary">
       <div class="d-flex">
         <img src="../images/teacher-2816112.jpg" alt="" style="width: 3rem" />
-        <a href="profile.html">Josephineee97</a>
+        <a href="profile.html">username</a>
       </div>
     </nav>
     <nav class="navbar fixed-bottom navbar-expand bg-body-tertiary">
       <div class="d-flex d-sm-none">
         <img src="../images/teacher-2816112.jpg" alt="" style="width: 3rem" />
-        <a href="profile.html">Josephineee97</a>
+        <a href="profile.html">username</a>
       </div>
     </nav>
 
-    <h1>A specific listing / title / Arrows and column</h1>
+    <h1>A specific listing / title </h1>
 
     <div class="container">
       <div class="row mb-5 listing-container"></div>
 
-      <div class="row mb-5">
-        <!-- <div class="card " style="width:"> -->
+      <!-- <div class="row mb-5">
+        <div class="card " style="width:">
         <div class="card d-flex justify-content-center" style="width: 28rem">
           <img
             src="../images/marius-girard-_8zO0LaCxRQ-unsplash.jpg"
@@ -73,7 +74,7 @@
             <li class="list-group-item">Deadline: 08th aug 20024</li>
           </ul>
         </div>
-      </div>
+      </div> -->
 
       <div class="row mb-5 d-flex ">
         <h2>Make a bid</h2>
@@ -82,14 +83,14 @@
           <div class="mb-3">
             <label for="exampleInputBid" class="form-label">Your bid</label>
             <input
-              type="number??"
+              type="number"
               class="form-control"
-              id="exampleInputBid"
+              id="bidInput"
               aria-describedby="bidHelp"
             />
             <div id="bidHelp" class="form-text">some help</div>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label"
               >Your Password</label
             >
@@ -98,6 +99,9 @@
               class="form-control"
               id="exampleInputPassword1"
             />
+          </div> -->
+          <div id="formHelp"> 
+            <p>You can have some help if you need it :)))</p>
           </div>
           <button type="submit" class="btn btn-primary">Make a bid</button>
         </form>
@@ -110,7 +114,7 @@
             class="bids-container list-group list-group-numbered col-md-8 col-lg-6"
           ></ol>
         </div>
-
+<!-- 
         <div class="bids-example">
           <ol class="list-group list-group-numbered col-md-8 col-lg-6">
             <li
@@ -141,7 +145,7 @@
               <span class="badge text-bg-primary rounded-pill">687 nok</span>
             </li>
           </ol>
-        </div>
+        </div> -->
       </div>
     </div>
   </body>

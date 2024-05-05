@@ -1,7 +1,7 @@
-import { baseURL } from "./endpoints.mjs";
-import { allListings } from "./endpoints.mjs";
-import { getData } from "./getData.mjs";
-import { bids } from "./endpoints.mjs";
+import { baseURL } from "../endpoints.mjs";
+import { allListings } from "../endpoints.mjs";
+import { getData } from "../getData.mjs";
+import { bids } from "../endpoints.mjs";
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);

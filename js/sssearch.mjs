@@ -4,29 +4,39 @@ import { getData } from "./getData.mjs";
 const url = baseURL + allListings;
 
 
-const input = document.querySelector("input");
-const listingsContainer = document.querySelector(
-  ".listings-container"
-);
+const searchBar = document.querySelector("input");
+console.log("input:", searchBar)
+const listingsContainer = document.querySelector(".listings-container");
 
-listingsContainer.innerHTML = `<p>hei</p>`;
+/* listingsContainer.innerHTML = `<p>hei</p>`;
+ */
 
-input.onkeyup = function harvestValue(event) {
+////////
+
+
+// this part is ok
+searchBar.onkeyup = function harvestValue(event) {
   event.preventDefault();
+  console.log("input:", searchBar.value);
 
-  console.log("input:", input.value);
-
-  const criterium = input.value.toLowerCase();
+  const criterium = searchBar.value.toLowerCase();
   console.log("criterium:", criterium);
 
   filterListings(criterium);
 
 };
 
+
+// når jeg tok vekk denne så dukket alle listings opp igjen
 async function filterListings(kriterium) {
   console.log("Kriterium:", kriterium);
 
-  const listings = await getData(url);
+
+  // det er her feilen ligger, 
+  // men kanskje jeg ikke trenger å call the function again??
+  // jeg har jo allerede listings, import from??
+/*   const listings = await getData(url);
+ */
 
   console.log("why cant this be filtered?:", listings.data);
 
@@ -38,7 +48,6 @@ async function filterListings(kriterium) {
   });
 
   console.log("filteredListings:", filteredListings);
-
   displayData(filteredListings);
 }
 
@@ -55,6 +64,33 @@ async function displayData(value) {
     //loop throug data, and display, find way wo/ innerHTML
     for (let i = 0; i < value.length; i++) {
       listingsContainer.innerHTML += `<div
+      class="card m-3 card col-12 col-sm-6 col-lg-4"
+      style="width: 18rem">
+    
+      <div class="card-body">
+        <h5 class="card-title">${value2[i].title}</h5>
+        <p class="card-text"> ${value2[i].description}
+        </p>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Bids: ${value2[i]._count.bids}</li>
+        <li class="list-group-item">Deadline: ${value2[i].endsAt}</li>
+      </ul>
+
+      <div class="card-body">
+        <a href="html/listing.html?id=${value2[i].id}" class="card-link">open</a>
+      </div>
+    </div>`;
+  
+    }
+  } catch {
+
+  }
+};
+
+
+ /*    `<div
           class="card m-3 card col-12 col-sm-6 col-lg-4"
           style="width: 18rem">
           <img
@@ -74,9 +110,4 @@ async function displayData(value) {
           <div class="card-body">
             <a href="html/listing.html?id=${value[i].id}" class="card-link">open</a>
           </div>
-        </div>`;
-    }
-  } catch {}
-}
-
-
+        </div>`; */

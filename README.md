@@ -45,3 +45,18 @@ https://docs.noroff.dev/docs/v2/auction-house/profiles, update profile
 
 Or/ make it so the profile opened depends on what profile is logged in?
 querystring???
+
+// first tidy up index
+// search funker
+// open listing funker
+// prøve å ta vekk pagination
+// if I dont try to include the image, all the listings show up
+//
+
+// 1308, index is ok, next change out josephine
+
+// når jeg har med serch.mjs, så blir alle poster borte, 
+// her er det noe rart. 
+// use separate element for search results??
+
+hva skjer om jeg bare putter alt i samme fil? not exactly best practice but :/
